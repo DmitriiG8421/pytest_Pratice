@@ -5,7 +5,7 @@ import random
 #     page.goto("https://www.google.com")
 #     assert "Google" in page.title()
 
-def random_sleep(min_time=0, max_time=0.1):
+def random_sleep(min_time=0, max_time=1):
     time.sleep(random.uniform(min_time, max_time))
 
 def findAndFill(chosenId,chosenFill,page): 
@@ -28,7 +28,12 @@ def test_sign_up(page):
     print(page.title())
     assert "Login" in page.title()
 
+
 def test_log_in(page):
+    # log_in_url = "https://faruk-hasan.com/automation/login.html"
+    # page.goto(log_in_url)
     random_sleep(0.5,1)
+    # findAndFill("#username","Mario_Dario",page)
     findAndFill("#password","IlikeMathPassword",page)
-    assert "playwright-selenium-cypress-practice" in 
+    random_sleep(10,10)
+    assert "playwright-selenium-cypress-practice" in page.URL
