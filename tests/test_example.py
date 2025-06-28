@@ -17,23 +17,21 @@ def findAndFill(chosenId,chosenFill,page):
     search_box.press("Enter")
     random_sleep()
 
-def test_sign_up(page):
+def test_sign_up_log_in(page):
     sign_up_url = "https://faruk-hasan.com/automation/signup.html"
     page.goto(sign_up_url)
+
+    #sing up
     findAndFill("#username","Mario_Dario",page)
     findAndFill("#email","test@gmail.com",page)
     findAndFill("#password","IlikeMathPassword",page)
     findAndFill("#confirmPassword","IlikeMathPassword",page)
-    random_sleep(0.5,1)
-    print(page.title())
-    assert "Login" in page.title()
 
-
-def test_log_in(page):
-    # log_in_url = "https://faruk-hasan.com/automation/login.html"
-    # page.goto(log_in_url)
+    #log in
     random_sleep(0.5,1)
-    # findAndFill("#username","Mario_Dario",page)
     findAndFill("#password","IlikeMathPassword",page)
-    random_sleep(10,10)
-    assert "playwright-selenium-cypress-practice" in page.URL
+
+    header = page.locator("h1")
+    assert header.text_content() == "Automation Adventure"
+
+
